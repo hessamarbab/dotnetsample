@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace mrbatri.Controllers;
 
-public class UserController : Controller
+public class UserPageController : Controller
 {
     // 
     // GET: /User/
