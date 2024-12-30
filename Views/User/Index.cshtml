@@ -25,7 +25,7 @@
         registration_date: "2021/08/09"
     }
     ];
-    userList= 
+    userListUI= 
     '<table class="table table-striped">'+
         '<thead>'+
         '<tr>'+
@@ -37,19 +37,18 @@
         '</thead>'
     ;
 
-    userList += ' <tbody>'
+    userListUI += ' <tbody>'
     users.forEach((user, index) => {
-        userList += '<tr>';
-        userList += '<td>' + (index+1) + '</td>';
-        userList += '<td>' + user.fullname + '</td>';
-        userList += '<td>' + user.email + '</td>';
-        userList += '<td>' + user.registration_date + '</td>';
-        userList += '</tr>'
+        userListUI += '<tr>';
+        userListUI += '<td>' + (index+1) + '</td>';
+        userListUI += '<td>' + user.fullname + '</td>';
+        userListUI += '<td>' + user.email + '</td>';
+        userListUI += '<td>' + user.registration_date + '</td>';
+        userListUI += '</tr>'
     })
-    userList += '</tbody>'
-    userList += '</table>'
-
+    userListUI += '</tbody>'
+    userListUI += '</table>'
 
     userListEl = document.getElementById("user_list");
-    userListEl.innerHTML = userList 
+    userListEl.innerHTML = userListUI 
 </script>
