@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Users Page";
+}
+
+<div class="text-center">
+    <h3 class="p-3">This is users list:</h3>
+</div>
+<div  id="user_list" class="container">
+
+</div>
+<script>
+    let users = [{
+        fullname: "ali ahmadi",
+        email: "ali@ahmadi.com",
+        registration_date: "2019/03/05"
+    }];
+    userList= 
+    '<table class="table">'+
+        '<thead>'+
+        '<tr>'+
+        '<th scope="col">#</th>'+
+        '<th scope="col">fullname</th>'+
+        '<th scope="col">email</th>'+
+        '<th scope="col">registration_date</th>'+
+        '</tr>'+
+        '</thead>'
+    ;
+    
+    userList += ' <tbody>'
+    users.forEach((user, index) => {
+        userList += '<tr>';
+        userList += '<td>' + (index+1) + '</td>';
+        userList += '<td>' + user.fullname + '</td>';
+        userList += '<td>' + user.email + '</td>';
+        userList += '<td>' + user.registration_date + '</td>';
+        userList += ' </tr>'
+    })
+    userList += ' </tbody>'
+    userList += '    </table>'
+
+
+    userListEl = document.getElementById("user_list");
+    userListEl.innerHTML = userList 
+</script>
