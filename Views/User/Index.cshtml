@@ -13,9 +13,20 @@
         fullname: "ali ahmadi",
         email: "ali@ahmadi.com",
         registration_date: "2019/03/05"
-    }];
+    },
+    {
+        fullname: "asghar jafari",
+        email: "asghar@jafari.com",
+        registration_date: "2020/04/05"
+    },
+      {
+        fullname: "mojtaba pakzadeh",
+        email: "mojtaba@pakzadeh.com",
+        registration_date: "2021/08/09"
+    }
+    ];
     userList= 
-    '<table class="table">'+
+    '<table class="table table-striped">'+
         '<thead>'+
         '<tr>'+
         '<th scope="col">#</th>'+
@@ -25,7 +36,7 @@
         '</tr>'+
         '</thead>'
     ;
-    
+
     userList += ' <tbody>'
     users.forEach((user, index) => {
         userList += '<tr>';
@@ -33,10 +44,10 @@
         userList += '<td>' + user.fullname + '</td>';
         userList += '<td>' + user.email + '</td>';
         userList += '<td>' + user.registration_date + '</td>';
-        userList += ' </tr>'
+        userList += '</tr>'
     })
-    userList += ' </tbody>'
-    userList += '    </table>'
+    userList += '</tbody>'
+    userList += '</table>'
 
 
     userListEl = document.getElementById("user_list");
