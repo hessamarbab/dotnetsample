@@ -1,8 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+using mrbatri.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddDbContext<UserContext>(opt =>
+    opt.UseSqlServer(builder.Configuration.GetConnectionString("UserContext")?? throw new InvalidOperationException("Connection string 'UserContext' not found.")));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
