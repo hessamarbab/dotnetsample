@@ -16,9 +16,13 @@
             const url = "https://localhost:7269/api/users";
             
             const response = await fetch(url);
+            userListEl = document.getElementById("user_list");
 
             if (!response.ok) {
-            throw new Error(`Response status: ${response.status}`);
+                const problem = await response.json();
+                userListEl.innerHTML = problem.detail;
+                userListEl.classList.add("text-danger");
+                throw new Error(`Response status: ${response.status}`);
             }
 
             const users = await response.json(); // Use await here as json() returns a Promise
@@ -38,7 +42,7 @@
             users.forEach((user, index) => {
                 userListUI += '<tr>';
                 userListUI += '<td>' + (index+1) + '</td>';
-                userListUI += '<td>' + user.fullname + '</td>';
+                userListUI += '<td>' + user.fullName + '</td>';
                 userListUI += '<td>' + user.email + '</td>';
                 userListUI += '<td>' + user.registrationDate + '</td>';
                 userListUI += '</tr>'
@@ -46,7 +50,6 @@
             userListUI += '</tbody>'
             userListUI += '</table>'
 
-            userListEl = document.getElementById("user_list");
             userListEl.innerHTML = userListUI 
         } catch (error) {
             console.error("Error fetching users:", error);

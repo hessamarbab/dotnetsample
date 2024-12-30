@@ -24,15 +24,21 @@ namespace mrbatri.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
-            User[] users = new User[] {
-                new User{Id=1,FullName="ali ahmadi",Email="ali@ahmadi.com",RegistrationDate=new DateTime(2019,03,05)},
-                new User{Id=2,FullName="asghar jafari",Email="asghar@jafari.com",RegistrationDate=new DateTime(2020,04,05)},
-                new User{Id=3,FullName="mojtaba pakzadeh",Email="mojtaba@pakzadeh.com",RegistrationDate=new DateTime(2021,08,09)}
-            };
+  
+            try {
+                
+                IEnumerable<User> users= await _context.Users.ToListAsync();
+                
+                if (users.Count() == 0)
+                {
+                    return Problem("Not Found!", "", 404);
+                }
 
-            IEnumerable<User> userEnumerable = users; 
-            
-            return Ok(userEnumerable);
+                return Ok(users);
+            } catch (Exception e) {
+
+                return Problem("DB Connection Error!", "", 503);
+            }                
         }
     }
     
